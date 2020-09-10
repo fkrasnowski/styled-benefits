@@ -1,5 +1,5 @@
 {
-  "name": "styled-toolkit",
+  "name": "styled-benefits",
   "version": "0.1.0",
   "description": "Events, variants and more for styled-componets/Emotion",
   "main": "lib/index.js",
