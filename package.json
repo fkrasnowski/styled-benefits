@@ -1,0 +1,45 @@
+{
+  "name": "styled-toolkit",
+  "version": "0.1.0",
+  "description": "Events, variants and more for styled-componets/Emotion",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fkrasnowski/styled-toolkit.git"
+  },
+  "keywords": [
+    "react",
+    "css-in-js",
+    "styles",
+    "animation",
+    "styled-componets",
+    "emotion"
+  ],
+  "author": "fkrasnowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fkrasnowski/styled-toolkit/issues"
+  },
+  "homepage": "https://github.com/fkrasnowski/styled-toolkit#readme",
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "dependencies": {
+    "@rooks/use-timeout": "^3.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4"
+  }
+}
