@@ -1,10 +1,30 @@
 import { getKeyframes, useKeyframes } from './keyframes'
-import * as selectors from './selectors'
+import {
+  withProps,
+  variant,
+  whileTap,
+  whileMouseHover,
+  whileMouseHold,
+  whileHold,
+  afterClick,
+  afterHold,
+  afterMouseHover,
+  afterTap,
+} from './selectors'
 import { interactive } from './interactive'
 
-export default {
+export {
   getKeyframes,
   useKeyframes,
-  ...selectors,
   interactive,
+  withProps,
+  variant,
+  whileTap,
+  whileMouseHover,
+  whileMouseHold,
+  whileHold,
+  afterClick,
+  afterHold,
+  afterMouseHover,
+  afterTap,
 }

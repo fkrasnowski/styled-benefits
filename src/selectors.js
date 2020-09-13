@@ -1,20 +1,30 @@
+import { Component } from 'react'
+
 const selectIfTrue = _ => (_ ? '&' : '_')
 
 export const variant = name => props => selectIfTrue(props.variant === name)
 
-export const withProp = (propName, propValue) => props =>
-  propValue
-    ? selectIfTrue(props[propName] === propValue)
-    : selectIfTrue(props[propName])
+// export const withProp = (propName, propValue) => props =>
+//   propValue
+//     ? selectIfTrue(props[propName] === propValue)
+//     : selectIfTrue(props[propName])
 
-const getStylesFromStyledComponent = component => {
-  // for Emotion:
-  if (component?.__emotion_styles) return component.__emotion_styles
-  // for styled-components:
-  if (component?.componentStyle?.rules) return component.componentStyle.rules
+//New version accepts object:
 
-  throw Error('Wrong type of element passed as interactive')
-}
+export const withProps = (...props) => componentProps =>
+  selectIfTrue(
+    (() => {
+      const propsObj = props[0]
+      if (typeof propsObj === 'object') {
+        for (const prop in propsObj)
+          if (componentProps[prop] !== propsObj[prop]) return false
+        return true
+      }
+      for (const prop of props)
+        if (componentProps[prop] === undefined) return false
+      return true
+    })()
+  )
 
 const createSelector = name => props => selectIfTrue(props?.[name]?.get())
 

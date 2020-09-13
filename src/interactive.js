@@ -1,6 +1,15 @@
 import React from 'react'
 import SelectorProvider from './selector-provider'
 
+const getStylesFromStyledComponent = component => {
+  // for Emotion:
+  if (component?.__emotion_styles) return component.__emotion_styles
+  // for styled-components:
+  if (component?.componentStyle?.rules) return component.componentStyle.rules
+
+  throw Error('Wrong type of element passed as interactive')
+}
+
 export const interactive = styledComponent => {
   const stylesArray = getStylesFromStyledComponent(styledComponent)
   const functions = stylesArray.filter(v => typeof v === 'function')
