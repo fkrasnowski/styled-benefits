@@ -11,7 +11,7 @@ import {
   afterMouseHover,
   afterTap,
 } from './selectors'
-import { interactive } from './interactive'
+import { interactive, getStyle } from './interactive'
 
 export {
   getKeyframes,
@@ -27,4 +27,5 @@ export {
   afterHold,
   afterMouseHover,
   afterTap,
+  getStyle,
 }

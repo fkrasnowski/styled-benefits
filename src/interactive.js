@@ -7,8 +7,10 @@ const getStylesFromStyledComponent = component => {
   // for styled-components:
   if (component?.componentStyle?.rules) return component.componentStyle.rules
 
-  throw Error('Wrong type of element passed as interactive')
+  throw Error('Wrong type of element passed as styled component')
 }
+
+export const getStyle = getStylesFromStyledComponent
 
 export const interactive = styledComponent => {
   const stylesArray = getStylesFromStyledComponent(styledComponent)
@@ -27,7 +29,7 @@ export const interactive = styledComponent => {
     : {}
 
   const keyframesProps = functions
-    .filter(fun => fun({}, true).__keyframesProp)
+    .filter(fun => fun({}, true)?.__keyframesProp)
     .map(fun => fun({}, true).__keyframesProp)
   return props => (
     <SelectorProvider
