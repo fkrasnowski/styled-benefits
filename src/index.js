@@ -10,6 +10,7 @@ import {
   afterHold,
   afterMouseHover,
   afterTap,
+  afterMouseHold,
 } from './selectors'
 import { interactive, getStyle } from './interactive'
 
@@ -28,4 +29,5 @@ export {
   afterMouseHover,
   afterTap,
   getStyle,
+  afterMouseHold,
 }

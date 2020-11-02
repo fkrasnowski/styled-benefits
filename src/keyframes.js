@@ -1,16 +1,35 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-export const getKeyframes = propName => (props, isInit) => {
-  if (isInit) return { __keyframesProp: propName }
-  return props?.[propName]?.style
+/**
+ *
+ * @param {string} propName - name of component property to attach keyframes animation
+ */
+export const getKeyframes = propName => {
+  const keyframesFn = props => props?.[propName]?.style
+
+  keyframesFn.__keyframesProp = propName
+  return keyframesFn
 }
 
+const reverseDirection = direction =>
+  ({
+    normal: 'reverse',
+    alternate: 'alternate-reverse',
+    reverse: 'normal',
+    'alternate-reverse': 'alternate',
+  }[direction] || 'reverse')
+
+/**
+ *
+ * @param {{name: string}} keyframes
+ * @param {{duration?: number, delay?: number, easing?: 'ease' | 'linear' | 'ease-out' | 'ease-in' | 'ease-in-out' | string, repeat?: number, direction?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse'}} animationProps
+ */
 export const useKeyframes = (
   keyframes,
   {
     duration = 5,
     delay = 0,
-    easing = 'linear',
+    easing = 'ease',
     repeat = 1,
     direction = 'normal',
   } = {}
@@ -30,7 +49,6 @@ export const useKeyframes = (
     setTimeout(() => setAnimation(animationFromProps(props)))
     setPlayState('running')
   }
-  console.log(animation)
   const pause = () => {
     setPlayState('paused')
   }
@@ -42,13 +60,14 @@ export const useKeyframes = (
 
   const reverse = () => {
     if (isPlaying) setPlayState('running')
-    else trigger({ direction: 'reverse' })
+    else trigger({ direction: reverseDirection(direction) })
   }
 
   const loop = () => trigger({ repeat: 'infinite' })
 
   const loopReverse = () =>
-    trigger({ repeat: 'infinite', direction: 'reverse' })
+    trigger({ repeat: 'infinite', direction: reverseDirection(direction) })
+
   const seek = percentage => {
     setPlayState('paused')
     setAnimation(
@@ -63,6 +82,7 @@ export const useKeyframes = (
     loop,
     loopReverse,
     seek,
+    trigger,
     animation: { setPlaying },
     style: {
       keyframes,

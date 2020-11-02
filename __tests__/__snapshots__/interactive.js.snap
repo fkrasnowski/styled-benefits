@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Interactive Component; Interactive component should render correctly 1`] = `
+<SelectorProvider
+  Element={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "__emotion_base": "div",
+      "__emotion_forwardProp": undefined,
+      "__emotion_real": [Circular],
+      "__emotion_styles": Array [
+        "",
+      ],
+      "defaultProps": undefined,
+      "displayName": "Styled(div)",
+      "render": [Function],
+      "withComponent": [Function],
+    }
+  }
+  delays={Object {}}
+  keyframesProps={Array []}
+  props={Object {}}
+/>
+`;

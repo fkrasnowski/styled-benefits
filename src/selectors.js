@@ -1,7 +1,9 @@
-import { Component } from 'react'
-
-const selectIfTrue = _ => (_ ? '&' : '_')
-
+const selectIfTrue = _ => (_ ? '' : '_')
+/**
+ *
+ * @param {string} name
+ * @returns {(props: {}) => string} props
+ */
 export const variant = name => props => selectIfTrue(props.variant === name)
 
 // export const withProp = (propName, propValue) => props =>
@@ -10,7 +12,17 @@ export const variant = name => props => selectIfTrue(props.variant === name)
 //     : selectIfTrue(props[propName])
 
 //New version accepts object:
-
+/**@description Applies if component props matches given object, string
+ * @example
+ *  ${withProps({size: 'xl'})} {
+ *    width: 300%;
+ *  }
+ *  // OR
+ *  ${withProps('dark')} {
+ *    background: black;
+ *  }
+ * @param {(string[] | {})} props
+ */
 export const withProps = (...props) => componentProps =>
   selectIfTrue(
     (() => {
@@ -25,17 +37,23 @@ export const withProps = (...props) => componentProps =>
       return true
     })()
   )
-
+/**
+ *
+ * @param {string} name
+ * @returns {*}
+ */
 const createSelector = name => props => selectIfTrue(props?.[name]?.get())
 
+/**@param {string} name
+ * @returns {(duration: number) => *}
+ */
 const createAfterSelector = name => delay => {
   const selectorName = 'after' + name
   if (typeof delay === 'number') {
-    return (props, isInit) => {
-      if (isInit) return { selectorName, __delay: delay }
-      // if (isInit) console.log("init");
-      return selectIfTrue(props[selectorName]?.get())
-    }
+    const selectorFn = props => selectIfTrue(props[selectorName]?.get())
+    selectorFn.__selectorName = selectorName
+    selectorFn.__delay = delay
+    return selectorFn
   }
   const props = delay
   return selectIfTrue(props?.[selectorName]?.get())
