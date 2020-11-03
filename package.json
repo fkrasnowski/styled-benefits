@@ -1,6 +1,6 @@
 {
   "name": "styled-benefits",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Events, variants and more for styled-componets/Emotion",
   "main": "dist/index.js",
   "module": "lib/index.js",
