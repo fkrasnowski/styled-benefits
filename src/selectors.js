@@ -1,4 +1,7 @@
-const selectIfTrue = _ => (_ ? '' : '_')
+export const checked = '&'
+export const unchecked = '_'
+
+const selectIfTrue = _ => (_ ? checked : unchecked)
 /**
  *
  * @param {string} name
@@ -72,10 +75,10 @@ export const whileHold = props => `${whileTap(props)}, ${whileMouseHold(props)}`
 
 export const afterHold = delay => {
   if (typeof delay === 'number') {
-    return (props, isInit) => {
-      if (isInit) return { selectorName: 'afterHold', __delay: delay }
-      return `${afterTap(props)}, ${afterMouseHold(props)}`
-    }
+    const selectorFn = props => `${afterTap(props)}, ${afterMouseHold(props)}`
+    selectorFn.__selectorName = 'afterHold'
+    selectorFn.__delay = delay
+    return selectorFn
   }
   const props = delay
   return `${afterTap(props)}, ${afterMouseHold(props)}`

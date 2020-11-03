@@ -15,11 +15,9 @@ import {
   whileMouseHover,
 } from '../.'
 import React from 'react'
+import { checked, unchecked } from '../src/selectors'
 
 describe('regular selectors;', () => {
-  const checked = ''
-  const unchecked = '_'
-
   test('variant returns selector string', () => {
     const props = { variant: 'dark' }
 
