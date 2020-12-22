@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-    <img src='https://github.com/fkrasnowski/styled-benefits/blob/master/assets/styled-benefits-banner.png' alt='Logo with desription'/>
+    <img src='https://raw.githubusercontent.com/fkrasnowski/styled-benefits/master/assets/styled-benefits-banner.png' alt='Logo with desription'/>
     <br/>
     <br/>
     <a href="https://www.npmjs.com/package/styled-benefits"><img src="https://img.shields.io/npm/v/styled-benefits" alt="NPM"></a>
